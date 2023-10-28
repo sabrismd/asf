@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-md-3">
+    {% if items_to_display %}
+    <form method="post" action="{% url 'q' %}">
+        {% csrf_token %}
+        <p class="text-success fw-bold">Date:</p>
+        <div class="mb-3">
+            <input type="date" class="form-control" name="date" required>
+        </div>
+        <p class="text-success fw-bold">Sub:</p>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Subject Of Your Work" name="sub" required>
+        </div>
+        <hr class="bg-white">
+        <p class="text-success fw-bold">To:</p>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Client/CustomerName" name="a1" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Doorno/Street" name="a2" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Area/District" name="a3" required>
+        </div>
+    {% for i in items_to_display %}
+    <p class="text-success fw-bold">{{i}}</p>
+    {% include 'loc.html' %}
+    <script>
+        function calculateAmount() {
+            var quantity = parseFloat(document.getElementById("quantity").value) || 0;
+            var rate = parseFloat(document.getElementById("rate").value) || 0;
+            var amountField = document.getElementById("amount");
+            
+            if (quantity > 0 && rate > 0) {
+                amountField.value = (quantity * rate).toFixed(2);
+                amountField.disabled = false;
+            } else {
+                amountField.value = "";
+                amountField.disabled = true;
+            }
+        }
+    </script>
+    {% endfor %}
+    <select name="nof" class="form-select bg-success"  aria-label="Default select example">
+        <option selected>select</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+    <center><button class="btn btn-success" type="submit">Generate</button></center>
+    </form>
+    {% else %}
+    <form method="post" action="{% url 'los' %}">
+        {% csrf_token %}
+        <select name="option" class="form-select bg-success"  aria-label="Default select example">
+            <option selected>List Of Contents</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <button type="submit">ok</button>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

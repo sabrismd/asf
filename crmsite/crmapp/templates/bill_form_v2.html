@@ -12,6 +12,10 @@
         <div class="mb-3">
             <input type="number" class="form-control" name="bno" required>
         </div>
+        <p class="text-success fw-bold">Po No:</p>
+        <div class="mb-3">
+            <input type="number" class="form-control" placeholder="if you have not PO No,Then Leave this field blank" name="pno">
+        </div>
         <p class="text-success fw-bold">Sub:</p>
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Subject Of Your Work" name="sub" required>
@@ -26,6 +30,9 @@
         </div>
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Area/District" name="a3" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="GSTIN OF Client/Customer if no leave this field" name="a4">
         </div>
     {% for i in items_to_display %}
     <p class="text-success fw-bold">{{i}}</p>

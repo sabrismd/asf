@@ -1,0 +1,43 @@
+@media print {
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .table-container {
+        page-break-inside: avoid;
+        max-height: 80vh; /* Adjust the maximum height as needed */
+        overflow: auto;
+    }
+
+    .t2 {
+        max-height: none;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    table {
+        font-size: smaller; /* Reduce the font size for the table content */
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    /* Adjust margins and padding to fit your content on a single page */
+    .table table-bordered {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ensure space for the footer by pushing content up */
+    .footer {
+        margin-top: 30px; /* Adjust this value as needed to create space for the footer */
+        page-break-before: always; /* Add a page break before the footer */
+    }
+}
